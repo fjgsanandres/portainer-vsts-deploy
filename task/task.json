@@ -32,10 +32,32 @@
 		"required": true,
 		"options": {
 			"Deploy an stack": "Deploy an stack",
-			"Deploy an service": "Deploy an service"
+			"Deploy an service": "Deploy an service",
+			"Deploy an image": "Deploy an image"
 		},
 		"helpMarkDown": "Select a Portainer.io action."
 	},
+        {
+		"name": "containerRegistry",
+		"type": "connectedService:dockerregistry",
+		"label": "Container registry",
+		"groupName": "containerRepository",
+		"helpMarkDown": "Select a Docker registry service connection. Required for commands that need to authenticate with a registry."
+		"visibleRule": "action = Deploy an image"
+        },
+        {
+		"name": "repository",
+		"label": "Container repository",
+		"type": "string",
+		"helpMarkDown": "Name of the repository.",
+		"defaultValue": "",
+		//"visibleRule": "command != login && command != logout && command != start && command != stop",
+		"visibleRule": "action = Deploy an image"
+		"groupName": "containerRepository",
+		"properties": {
+		    "EditableOptions": "True"
+		}
+        },
 	{
 		"name": "StackName",
 		"type": "string",
